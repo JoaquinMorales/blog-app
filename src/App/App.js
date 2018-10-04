@@ -2,15 +2,13 @@
 
 import React from 'react';
 import { hot } from 'react-hot-loader';
+import { Posts } from '../views/Posts';
 
-const App = () => {
-  const description = 'yarn, webpack, babel, hot loader, jest, lint and Flow';
-  return (
-    <div>
-      <h1>Welcome</h1>
-      <p>{description}</p>
-    </div>
-  );
-};
+const App = () => (
+  <div>
+    <h1>Welcome</h1>
+    <Posts />
+  </div>
+);
 
 export default hot(module)(App);

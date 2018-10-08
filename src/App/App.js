@@ -2,13 +2,13 @@
 
 import React from 'react';
 import { hot } from 'react-hot-loader';
-import { Posts } from '../views/Posts';
-import { TopMenu } from '../components/TopMenu';
+import { TopMenu } from '../layout/TopMenu';
+import { Main } from '../layout/Main';
 
 const App = () => (
   <div>
     <TopMenu />
-    <Posts />
+    <Main />
   </div>
 );
 

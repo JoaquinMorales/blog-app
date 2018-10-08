@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react';
 import { Menu, Segment } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 export default class TopMenu extends Component {
   constructor(props) {
@@ -23,11 +24,15 @@ export default class TopMenu extends Component {
             name="home"
             active={activeItem === 'home'}
             onClick={this.handleItemClick()}
+            as={Link}
+            to="/"
           />
           <Menu.Item
             name="posts"
             active={activeItem === 'posts'}
             onClick={this.handleItemClick()}
+            as={Link}
+            to="/Posts"
           />
         </Menu>
       </Segment>

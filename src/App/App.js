@@ -3,10 +3,11 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
 import { Posts } from '../views/Posts';
+import { TopMenu } from '../components/TopMenu';
 
 const App = () => (
   <div>
-    <h1>Welcome</h1>
+    <TopMenu />
     <Posts />
   </div>
 );

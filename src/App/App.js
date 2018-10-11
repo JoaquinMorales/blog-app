@@ -2,15 +2,14 @@
 
 import React from 'react';
 import { hot } from 'react-hot-loader';
+import { TopMenu } from '../layout/TopMenu';
+import { Main } from '../layout/Main';
 
-const App = () => {
-  const description = 'yarn, webpack, babel, hot loader, jest, lint and Flow';
-  return (
-    <div>
-      <h1>Welcome</h1>
-      <p>{description}</p>
-    </div>
-  );
-};
+const App = () => (
+  <div>
+    <TopMenu />
+    <Main />
+  </div>
+);
 
 export default hot(module)(App);

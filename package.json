@@ -50,7 +50,7 @@
   "scripts": {
     "start": "webpack-dev-server --mode development --open --hot",
     "build": "webpack --mode production",
-    "test": "jest --watchAll",
+    "test": "jest --watch -o",
     "lint": "eslint ./src --fix",
     "flow": "flow status"
   },

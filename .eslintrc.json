@@ -5,7 +5,8 @@
         "javascript.validate.enable": false,
         "import/no-named-as-default": 0,
         "import/prefer-default-export": 0,
-        "linebreak-style": ["error", "unix"]
+        "linebreak-style": ["error", "unix"],
+        "no-console": ["error", { "allow": ["warn", "error"] }]
     },
     "extends": "airbnb",
     "env": {

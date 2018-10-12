@@ -15,7 +15,8 @@ export class Query extends Component {
   componentDidUpdate(prevProps) {
     const { params } = this.props;
     const { params: oldParams } = prevProps;
-    const same = Object.keys(oldParams).reduce((oldValue, key) => oldValue && oldParams[key] === params[key], true);
+    const same = Object.keys(oldParams)
+      .reduce((oldValue, key) => oldValue && oldParams[key] === params[key], true);
     if (!same) {
       this.callQuery();
     }

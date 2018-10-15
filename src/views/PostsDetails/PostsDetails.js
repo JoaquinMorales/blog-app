@@ -1,12 +1,37 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Segment } from 'semantic-ui-react';
 import { Search } from '../../components/Search';
+import { Query } from '../../service';
 
 
-export const PostsDetails = () => (
-  <Segment>
-    <Segment textAlign="center" basic><Search /></Segment>
-  </Segment>
-);
+export class PostsDetails extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { selectedPost: 0 };
+  }
+
+  updateSelected(id) {
+    this.setState({ selectedPost: id });
+  }
+
+  render() {
+    return (
+      <Segment>
+        <Query params={{ method: 'get', url: 'https://jsonplaceholder.typicode.com/posts' }}>
+          {
+            (response) => {
+              const { data: posts = [] } = response;
+              const titles = posts.map(item => ({ key: item.id, value: item.title }));
+              return [
+                <Segment key="searchSection" textAlign="center" basic><Search items={titles} onSelect={this.updateSelected.bind(this)} /></Segment>,
+                <div key="DetailsSection">{this.state.selectedPost}</div>,
+              ];
+            }
+          }
+        </Query>
+      </Segment>
+    );
+  }
+}
 
 export default PostsDetails;

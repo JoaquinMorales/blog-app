@@ -8,6 +8,7 @@ export class PostsDetails extends Component {
   constructor(props) {
     super(props);
     this.state = { selectedPost: 0 };
+    this.updateSelected = this.updateSelected.bind(this);
   }
 
   updateSelected(id) {
@@ -23,7 +24,7 @@ export class PostsDetails extends Component {
               const { data: posts = [] } = response;
               const titles = posts.map(item => ({ key: item.id, value: item.title }));
               return [
-                <Segment key="searchSection" textAlign="center" basic><Search items={titles} onSelect={this.updateSelected.bind(this)} /></Segment>,
+                <Segment key="searchSection" textAlign="center" basic><Search items={titles} onSelect={this.updateSelected} /></Segment>,
                 <div key="DetailsSection">{this.state.selectedPost}</div>,
               ];
             }

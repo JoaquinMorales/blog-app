@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Segment } from 'semantic-ui-react';
 import { Search } from '../../components/Search';
+import { Post } from '../../components/Post';
 import { Query } from '../../service';
 
 
@@ -18,15 +19,18 @@ export class PostsDetails extends Component {
   render() {
     return (
       <Segment>
-        <Query params={{ method: 'get', url: 'https://jsonplaceholder.typicode.com/posts' }}>
+        <Query params={{ method: 'get', url: 'posts' }}>
           {
             (response) => {
               const { data: posts = [] } = response;
+              const { state: { selectedPost } } = this;
               const titles = posts.map(item => ({ key: item.id, value: item.title }));
-              return [
-                <Segment key="searchSection" textAlign="center" basic><Search items={titles} onSelect={this.updateSelected} /></Segment>,
-                <div key="DetailsSection">{this.state.selectedPost}</div>,
-              ];
+              return (
+                <React.Fragment>
+                  <Segment key="searchSection" textAlign="center" basic><Search items={titles} onSelect={this.updateSelected} /></Segment>
+                  {selectedPost !== 0 && <Post id={selectedPost} />}
+                </React.Fragment>
+              );
             }
           }
         </Query>

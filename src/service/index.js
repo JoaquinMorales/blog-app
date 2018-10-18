@@ -1,3 +1,4 @@
 import Query from './Query';
+import { config } from './constants';
 
-export { Query };
+export { Query, config };

@@ -15,7 +15,7 @@ export class Search extends Component {
     return ({ target: { value } }) => {
       const { props: { items } } = this;
       const filtered = items.filter(item => item.value.includes(value));
-      this.setState({ search: value, showDdl: value, filtered });
+      this.setState({ search: value, showDdl: Boolean(value), filtered });
     };
   }
 
@@ -43,7 +43,7 @@ export class Search extends Component {
           && (
           <Menu vertical className="results">
             {filtered.length === 0 ? <Menu.Item>No results were found</Menu.Item> : null}
-            {filtered.map(item => (<Menu.Item key={item.key} onClick={() => this.handleSelect(item.key)}>{item.value}</Menu.Item>))}
+            {filtered.map(({ key, value }) => (<Menu.Item key={key} onClick={() => this.handleSelect(key)}>{value}</Menu.Item>))}
           </Menu>
           )}
       </div>

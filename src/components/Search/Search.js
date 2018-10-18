@@ -39,13 +39,15 @@ export class Search extends Component {
     return (
       <div>
         <Input icon="search" placeholder="Search..." value={search} onChange={this.handleSearch()} onFocus={this.handleFocus()} />
-        {showDdl
-          && (
+        {showDdl && (
           <Menu vertical className="results">
             {filtered.length === 0 ? <Menu.Item>No results were found</Menu.Item> : null}
-            {filtered.map(({ key, value }) => (<Menu.Item key={key} onClick={() => this.handleSelect(key)}>{value}</Menu.Item>))}
+              {filtered.map(({ key, value }) => (
+                <Menu.Item key={key} onClick={() => this.handleSelect(key)}>{value}</Menu.Item>
+              ))}
           </Menu>
-          )}
+        )
+        }
       </div>
     );
   }

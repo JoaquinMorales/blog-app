@@ -22,9 +22,9 @@ export class PostsDetails extends Component {
         <Query params={{ method: 'get', url: 'posts' }}>
           {
             (response) => {
-              const { data: posts = [] } = response;
+              const { data = [] } = response;
               const { state: { selectedPost } } = this;
-              const titles = posts.map(item => ({ key: item.id, value: item.title }));
+              const titles = data.map(item => ({ key: item.id, value: item.title }));
               return (
                 <React.Fragment>
                   <Segment key="searchSection" textAlign="center" basic><Search items={titles} onSelect={this.updateSelected} /></Segment>

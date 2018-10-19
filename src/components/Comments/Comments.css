@@ -1,0 +1,13 @@
+.ui.comments .comment .avatar {
+  height: 2.5em;
+}
+
+.comment .label{
+  display: block;
+  float: left;
+  margin: .2em 0 0;
+}
+
+.ui.comments .comment>.label~.content {
+  margin-left: 3.5em;
+}

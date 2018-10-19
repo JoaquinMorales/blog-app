@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Segment } from 'semantic-ui-react';
 import { Search } from '../../components/Search';
 import { Post } from '../../components/Post';
+import { Comments } from '../../components/Comments';
 import { Query } from '../../service';
 
 
@@ -28,7 +29,14 @@ export class PostsDetails extends Component {
               return (
                 <React.Fragment>
                   <Segment key="searchSection" textAlign="center" basic><Search items={titles} onSelect={this.updateSelected} /></Segment>
-                  {selectedPost !== 0 && <Post id={selectedPost} />}
+                  {selectedPost !== 0
+                    && (
+                    <div>
+                      <Post id={selectedPost} />
+                      <Comments postId={selectedPost} />
+                    </div>
+                    )
+                  }
                 </React.Fragment>
               );
             }

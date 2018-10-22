@@ -4,6 +4,12 @@ import React, { Component } from 'react';
 import { Menu, Segment } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
+const menuOptions = [
+  { name: 'home', to: '/' },
+  { name: 'posts', to: '/Posts' },
+  { name: 'users', to: '/Users' },
+];
+
 export default class TopMenu extends Component {
   constructor(props) {
     super(props);
@@ -20,20 +26,18 @@ export default class TopMenu extends Component {
     return (
       <Segment inverted>
         <Menu inverted secondary>
-          <Menu.Item
-            name="home"
-            active={activeItem === 'home'}
-            onClick={this.handleItemClick()}
-            as={Link}
-            to="/"
-          />
-          <Menu.Item
-            name="posts"
-            active={activeItem === 'posts'}
-            onClick={this.handleItemClick()}
-            as={Link}
-            to="/Posts"
-          />
+          {
+            menuOptions.map(item => (
+              <Menu.Item
+                key={item.name}
+                name={item.name}
+                active={activeItem === item.name}
+                to={item.to}
+                onClick={this.handleItemClick()}
+                as={Link}
+              />
+            ))
+          }
         </Menu>
       </Segment>
     );

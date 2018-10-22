@@ -4,7 +4,7 @@ import React from 'react';
 import { Query } from '../../service';
 
 export const Posts = () => (
-  <Query params={{ method: 'get', url: 'https://jsonplaceholder.typicode.com/posts' }}>
+  <Query params={{ method: 'get', url: 'posts' }}>
     {
       (response) => {
         const { data: posts = [] } = response;

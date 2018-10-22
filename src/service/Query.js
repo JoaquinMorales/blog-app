@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import { config } from './constants';
 
 export class Query extends Component {
   constructor(props) {
@@ -23,15 +24,15 @@ export class Query extends Component {
   }
 
   callQuery() {
-    const { params } = this.props;
-    this.setState(prevState => ({ ...prevState, loading: true }));
-    axios.request(params)
+    const { params: { url, ...rest } } = this.props;
+    this.setState({ loading: true });
+    axios.request({ ...rest, url: `${config.urlBase}/${url}` })
       .then(response => this.setState({ response, loading: false }))
       .catch((error) => {
         if (error.response) {
           this.setState({ response: error.response, loading: false });
         } else {
-          this.setState(prevState => ({ ...prevState, loading: false }));
+          this.setState({ loading: false });
           console.error('Error', error.message);
         }
       });

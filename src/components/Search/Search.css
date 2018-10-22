@@ -1,0 +1,9 @@
+.ui.vertical.menu.results {
+  position: absolute;
+  max-height: 400px;
+  overflow-y: scroll;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}

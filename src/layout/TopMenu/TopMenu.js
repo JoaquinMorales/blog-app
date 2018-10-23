@@ -6,8 +6,8 @@ import { Link } from 'react-router-dom';
 
 const menuOptions = [
   { name: 'home', to: '/' },
-  { name: 'posts', to: '/Posts' },
-  { name: 'users', to: '/Users' },
+  { name: 'posts', to: '/posts' },
+  { name: 'users', to: '/users' },
 ];
 
 export default class TopMenu extends Component {

@@ -14,7 +14,7 @@ export const actionButtons = field => (
     compact
     icon="info"
     as={Link}
-    to={`/Posts?id=${field}`}
+    to={`/Posts/${field}`}
   />
 );
 

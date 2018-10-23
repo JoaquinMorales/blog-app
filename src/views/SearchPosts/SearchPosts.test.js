@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import SearchPosts from './SearchPosts';
 
-describe('PostDetails view', () => {
+describe('Search posts view', () => {
   it('should render the view with search imput', () => {
     const postsQueryFn = shallow(<SearchPosts />).find('Query').prop('children');
     const postsCmpt = shallow(<div>{postsQueryFn({ data: [{ id: 1, title: 'test' }] })}</div>);

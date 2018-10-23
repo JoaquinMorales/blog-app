@@ -6,7 +6,7 @@ import TopMenu from './TopMenu';
 describe('TopMenu component', () => {
   it('should render TopMenu', () => {
     const topMenu = shallow(<TopMenu />);
-    expect(topMenu.find('MenuItem')).toHaveLength(2);
+    expect(topMenu.find('MenuItem')).toHaveLength(3);
   });
 
   it('should change state when item is clicked', () => {

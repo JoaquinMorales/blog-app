@@ -1,4 +1,5 @@
 import React from 'react';
+import { Segment } from 'semantic-ui-react';
 import { Query } from '../../service';
 import { PaginatedTable } from '../../components/DataTable';
 
@@ -12,11 +13,12 @@ const Users = () => (
           { label: 'Company', field: 'company.name' },
         ];
         return (
-          <PaginatedTable
-            columns={columns}
-            rows={data}
-            loading={loading}
-          />
+          <Segment loading={loading}>
+            <PaginatedTable
+              columns={columns}
+              rows={data}
+            />
+          </Segment>
         );
       }
     }

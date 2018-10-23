@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Menu } from 'semantic-ui-react';
+import { Menu, Grid } from 'semantic-ui-react';
 import Table from '../Table/Table';
 
 class Pagination extends Component {
@@ -56,10 +56,14 @@ class Pagination extends Component {
     const { columns } = this.props;
     const { currentRows } = this.state;
     return (
-      <React.Fragment>
-        <Table rows={currentRows} columns={columns} />
-        { this.paginationTemplate() }
-      </React.Fragment>
+      <Grid>
+        <Grid.Row>
+          <Grid.Column><Table rows={currentRows} columns={columns} /></Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Column>{ this.paginationTemplate() }</Grid.Column>
+        </Grid.Row>
+      </Grid>
     );
   }
 }

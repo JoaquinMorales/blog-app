@@ -32,8 +32,8 @@ class Pagination extends Component {
   paginationTemplate() {
     const { rows, pageSize } = this.props;
     const { currentPage } = this.state;
-    const pages = rows.length % pageSize === 0 ?
-      rows.length / pageSize
+    const pages = rows.length % pageSize === 0
+      ? rows.length / pageSize
       : Math.floor(rows.length / pageSize) + 1;
     const pageItems = Array(pages).fill().map((_, index) => 1 + index);
     return (

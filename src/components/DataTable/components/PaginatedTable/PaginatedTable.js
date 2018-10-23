@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Menu, Grid } from 'semantic-ui-react';
 import Table from '../Table/Table';
 
-class Pagination extends Component {
+class PaginatedTable extends Component {
   constructor(props) {
     super(props);
     const { rows, pageSize } = props;
@@ -68,14 +68,14 @@ class Pagination extends Component {
   }
 }
 
-Pagination.propTypes = {
+PaginatedTable.propTypes = {
   columns: PropTypes.arrayOf(PropTypes.object).isRequired,
   rows: PropTypes.arrayOf(PropTypes.object).isRequired,
   pageSize: PropTypes.number,
 };
 
-Pagination.defaultProps = {
+PaginatedTable.defaultProps = {
   pageSize: 8,
 };
 
-export default Pagination;
+export default PaginatedTable;

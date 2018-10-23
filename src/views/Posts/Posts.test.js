@@ -7,7 +7,7 @@ describe('Posts view', () => {
     const postsQuery = shallow(<Posts />).find('Query').prop('children');
     const usersQuery = shallow(<div>{postsQuery({}, { loading: false })}</div>).find('Query').prop('children');
     const view = shallow(<div>{usersQuery({}, { loading: false })}</div>);
-    expect(view.find('Pagination')).toHaveLength(1);
+    expect(view.find('PaginatedTable')).toHaveLength(1);
     view.unmount();
   });
 
@@ -18,7 +18,7 @@ describe('Posts view', () => {
     const usersQuery = shallow(<div>{postsQuery({ data: posts }, { loading: false })}</div>).find('Query').prop('children');
     const view = shallow(<div>{usersQuery({ data: users }, { loading: false })}</div>);
     expect(view
-      .find('Pagination')
+      .find('PaginatedTable')
       .props().rows).toEqual([
       { title: 'title 1', id: 1, user: { id: 1, name: 'test' } },
     ]);

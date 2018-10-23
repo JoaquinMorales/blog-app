@@ -1,4 +1,4 @@
 import Table from './components/Table/Table';
-import PaginatedTable from './components/Pagination/Pagination';
+import PaginatedTable from './components/PaginatedTable/PaginatedTable';
 
 export { Table, PaginatedTable };

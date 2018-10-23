@@ -15,8 +15,12 @@ const DataTable = ({ columns, rows }) => (
     <Table.Body>
       {rows.map(row => (
         <Table.Row key={row.id}>
-          {columns.map(column => (
-            <Table.Cell key={`${column.field}${row.id}`}>{get(row, column.field)}</Table.Cell>
+          {columns.map(({ field, template }) => (
+            <Table.Cell key={`${field}${row.id}`}>
+              {
+                template ? template(get(row, field)) : get(row, field)
+              }
+            </Table.Cell>
           ))}
         </Table.Row>
       ))}

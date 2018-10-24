@@ -4,6 +4,7 @@ import { Posts } from '../../views/Posts';
 import { SearchPosts } from '../../views/SearchPosts';
 import { PostsDetails } from '../../views/PostsDetails';
 import { Users } from '../../views/Users';
+import { UserDetails } from '../../views/UserDetails';
 
 const Main = () => (
   <main>
@@ -11,7 +12,8 @@ const Main = () => (
       <Route exact path="/" component={SearchPosts} />
       <Route exact path="/posts" component={Posts} />
       <Route exact path="/posts/:id" component={PostsDetails} />
-      <Route path="/users" component={Users} />
+      <Route exact path="/users" component={Users} />
+      <Route exact path="/users/:id" component={UserDetails} />
     </Switch>
   </main>
 );

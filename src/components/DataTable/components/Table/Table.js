@@ -17,9 +17,7 @@ const DataTable = ({ columns, rows }) => (
         <Table.Row key={row.id}>
           {columns.map(({ field, template }) => (
             <Table.Cell key={`${field}${row.id}`}>
-              {
-                template ? template(get(row, field)) : get(row, field)
-              }
+              {template ? template(get(row, field)) : get(row, field)}
             </Table.Cell>
           ))}
         </Table.Row>
@@ -30,7 +28,9 @@ const DataTable = ({ columns, rows }) => (
 
 DataTable.propTypes = {
   columns: PropTypes.arrayOf(PropTypes.shape({
+    field: PropTypes.string,
     label: PropTypes.string,
+    template: PropTypes.func,
   })).isRequired,
   rows: PropTypes.arrayOf(PropTypes.object).isRequired,
 };

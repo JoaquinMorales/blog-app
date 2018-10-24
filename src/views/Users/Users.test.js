@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Users from './Users';
+import Users, { actionButtons } from './Users';
 
 describe('Users view', () => {
   it('should render a paginated Table', () => {
@@ -8,5 +8,10 @@ describe('Users view', () => {
     const view = shallow(<div>{usersQuery({}, { loading: false })}</div>);
     expect(view.find('PaginatedTable')).toHaveLength(1);
     view.unmount();
+  });
+
+  it('should have a template as button to allow pass to table', () => {
+    const actions = shallow(<div>{actionButtons(1)}</div>);
+    expect(actions.find('Button')).toHaveLength(1);
   });
 });

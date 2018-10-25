@@ -25,7 +25,7 @@ const UserDetails = ({ location: { pathname } }) => {
     <Query key="userInfo" params={{ method: 'get', url: `users/${userId}` }}>
       {({
         data = {
-          username: '', email: '', phone: '', addres: { street: '' }, company: { name: '' }, website: '',
+          username: '', email: '', phone: '', address: { street: '' }, company: { name: '' }, website: '',
         },
       }, { loading }) => (
         <Segment padded="very">

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Segment, Button } from 'semantic-ui-react';
+import { Segment, Button, Header } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { Query } from '../../service';
 import { PaginatedTable } from '../../components/DataTable';
@@ -28,6 +28,7 @@ const Users = () => (
         ];
         return (
           <Segment loading={loading}>
+            <Header as="h2">Users</Header>
             <PaginatedTable
               columns={columns}
               rows={data}

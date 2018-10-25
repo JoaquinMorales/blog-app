@@ -8,11 +8,12 @@ import { Main } from '../layout/Main';
 import './App.css';
 
 const App = () => (
-  <div>
+  <div className="main-container">
     <TopMenu />
     <Container>
       <Main />
     </Container>
+    <div className="footer" />
   </div>
 );
 

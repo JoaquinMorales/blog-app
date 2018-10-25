@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import { Menu, Segment } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import './TopMenu.css';
 
 const menuOptions = [
   { name: 'home', to: '/' },

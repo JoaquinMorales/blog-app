@@ -16,7 +16,7 @@ const Post = ({ id }) => (
               <Segment basic>{body}</Segment>
               <Header as="h4" floated="right">
                 Author:
-                <Link to={`users/${userId}`}>{name}</Link>
+                <Link to={`/users/${userId}`}>{name}</Link>
               </Header>
             </Segment>
           )

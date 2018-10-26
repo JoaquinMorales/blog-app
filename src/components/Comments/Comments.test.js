@@ -12,7 +12,15 @@ describe('comments component', () => {
 
   it('should render comments when service response with comments', () => {
     const commentsFn = shallow(<Comments postId={1} />).find('Query').prop('children');
-    const commentsCmpt = shallow(<div>{commentsFn({ data: [{ id: 1, name: 'test', email: 'test', body: 'test' }]}, { loading: false })}</div>);
+    const commentsCmpt = shallow(
+      <div>
+        {commentsFn({
+          data: [{
+            id: 1, name: 'test', email: 'test', body: 'test',
+          }],
+        }, { loading: false })}
+      </div>,
+    );
     expect(commentsCmpt.find('Comment')).toHaveLength(1);
   });
 });

@@ -1,23 +1,32 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Posts } from './Posts';
+import { Posts, actionButtons } from './Posts';
 
 describe('Posts view', () => {
-  const context = {};
-  beforeAll(() => {
-    const view = shallow(<Posts />);
-    context.query = view.find('Query').prop('children');
-  });
-  it('should render an empty ul when no post were sent', () => {
-    const { query } = context;
-    const postsView = shallow(<div>{query({})}</div>);
-    expect(postsView.find('li')).toHaveLength(0);
+  it('should render a paginated Table', () => {
+    const postsQuery = shallow(<Posts />).find('Query').prop('children');
+    const usersQuery = shallow(<div>{postsQuery({}, { loading: false })}</div>).find('Query').prop('children');
+    const view = shallow(<div>{usersQuery({}, { loading: false })}</div>);
+    expect(view.find('PaginatedTable')).toHaveLength(1);
+    view.unmount();
   });
 
-  it('should render five elements when five posts are passed', () => {
-    const posts = [{ title: 'title 1', id: 1 }, { title: 'title 2', id: 2 }, { title: 'title 3', id: 3 }];
-    const { query } = context;
-    const postsView = shallow(<div>{query({ data: posts })}</div>);
-    expect(postsView.find('li')).toHaveLength(3);
+  it('should render a paginated Table with data', () => {
+    const posts = [{ title: 'title 1', id: 1, userId: 1 }];
+    const users = [{ id: 1, name: 'test' }];
+    const postsQuery = shallow(<Posts />).find('Query').prop('children');
+    const usersQuery = shallow(<div>{postsQuery({ data: posts }, { loading: false })}</div>).find('Query').prop('children');
+    const view = shallow(<div>{usersQuery({ data: users }, { loading: false })}</div>);
+    expect(view
+      .find('PaginatedTable')
+      .props().rows).toEqual([
+      { title: 'title 1', id: 1, user: { id: 1, name: 'test' } },
+    ]);
+    view.unmount();
+  });
+
+  it('should have a template as button to allow pass to table', () => {
+    const actions = shallow(<div>{actionButtons(1)}</div>);
+    expect(actions.find('Button')).toHaveLength(1);
   });
 });

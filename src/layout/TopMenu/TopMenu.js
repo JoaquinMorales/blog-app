@@ -2,7 +2,8 @@
 
 import React, { Component } from 'react';
 import { Menu, Segment } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import { PropTypes } from 'prop-types';
 import './TopMenu.css';
 
 const menuOptions = [
@@ -11,10 +12,12 @@ const menuOptions = [
   { name: 'users', to: '/users' },
 ];
 
-export default class TopMenu extends Component {
+export class TopMenu extends Component {
   constructor(props) {
     super(props);
-    this.state = { activeItem: 'home' };
+    const { location: { pathname } } = props;
+    const [, module] = pathname.split('/');
+    this.state = { activeItem: module === '' ? 'home' : module };
   }
 
   handleItemClick() {
@@ -44,3 +47,8 @@ export default class TopMenu extends Component {
     );
   }
 }
+
+TopMenu.propTypes = { location: PropTypes.shape({ pathname: PropTypes.string }).isRequired };
+const wrapedTopMenu = withRouter(TopMenu);
+wrapedTopMenu.displayName = 'TopMenu';
+export default wrapedTopMenu;
